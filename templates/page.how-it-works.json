@@ -42,9 +42,9 @@
           "type": "text",
           "name": "Intro",
           "settings": {
-            "text": "<p><em>Four phases. Each one compounds what came before. You start wherever you are — we meet you there.</em></p>",
+            "text": "<h4>Four phases. Each one compounds what came before. </h4><h4>You start wherever you are — we meet you there.</h4>",
             "width": "100%",
-            "max_width": "narrow",
+            "max_width": "normal",
             "alignment": "center",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
@@ -70,7 +70,7 @@
           "settings": {
             "text": "<h2>Phase 1 — Reveal</h2><p>It starts with a conversation. Not an intake form — a thinking partnership. Our AI conducts a Fractal Twinning session that surfaces the shape of your Intelligence Field: your frameworks, friction points, opportunities, and cognitive style. You walk away with a personalized Seed Doc. Value before payment. Always.</p>",
             "width": "100%",
-            "max_width": "narrow",
+            "max_width": "normal",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
@@ -96,7 +96,7 @@
           "settings": {
             "text": "<h2>Phase 2 — Map</h2><p>The AI Amnesia Audit examines five dimensions of your current intelligence landscape: Surfaces (where your IP lives), Systems (how information flows), Stack (your tools and gaps), Syncs (where context breaks), and Sources (your raw material). You receive a comprehensive diagnostic with specific recommendations.</p>",
             "width": "100%",
-            "max_width": "narrow",
+            "max_width": "normal",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
@@ -122,7 +122,7 @@
           "settings": {
             "text": "<h2>Phase 3 — Build</h2><p>Memory Migration transforms your scattered Notion, Trello, Google Drive, and conversation chaos into a structured, queryable Intelligence Field. Your IP gets extracted, organized, and activated. Your team gets onboarded. Your Fractal Twin comes alive.</p>",
             "width": "100%",
-            "max_width": "narrow",
+            "max_width": "normal",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
@@ -148,7 +148,7 @@
           "settings": {
             "text": "<h2>Phase 4 — Cultivate</h2><p>Ongoing Intelligence Field cultivation. Weekly extractions from new conversations, meetings, and content. Vault gardening to keep your field clean, connected, and alive. Voice Pack maintenance as your thinking evolves. Quarterly knowledge health reports. Every new client doesn't drain you — they expand your field. The opposite of burnout work.</p>",
             "width": "100%",
-            "max_width": "narrow",
+            "max_width": "normal",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
@@ -184,7 +184,15 @@
           "blocks": {}
         }
       },
-      "block_order": ["heading", "intro", "phase-reveal", "phase-map", "phase-build", "phase-cultivate", "cta"],
+      "block_order": [
+        "heading",
+        "intro",
+        "phase-reveal",
+        "phase-map",
+        "phase-build",
+        "phase-cultivate",
+        "cta"
+      ],
       "settings": {
         "content_direction": "column",
         "gap": 8,
@@ -194,5 +202,7 @@
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
