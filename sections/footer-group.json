@@ -58,7 +58,7 @@
               "type": "text",
               "name": "Heading",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
+                "text": "<h2>Stay in the Field</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -84,7 +84,7 @@
               "type": "text",
               "name": "Text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<p>Frameworks, patterns, and field notes on building co-intelligence that compounds.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -128,7 +128,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 20,
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-8",
         "padding-block-start": 36,
         "padding-block-end": 36
       }
@@ -139,7 +139,7 @@
         "section_width": "page-width",
         "gap": 24,
         "divider_thickness": 1,
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-8",
         "padding-block-start": 12,
         "padding-block-end": 16
       },
@@ -162,11 +162,11 @@
         "social_icons": {
           "type": "social-links",
           "settings": {
-            "facebook_url": "https://www.facebook.com",
-            "instagram_url": "https://www.instagram.com",
-            "tiktok_url": "https://www.tiktok.com",
-            "twitter_url": "https://www.twitter.com",
-            "youtube_url": "https://www.youtube.com"
+            "facebook_url": "",
+            "instagram_url": "",
+            "tiktok_url": "",
+            "twitter_url": "",
+            "youtube_url": ""
           }
         }
       },
