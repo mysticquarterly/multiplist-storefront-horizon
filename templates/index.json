@@ -17,7 +17,7 @@
           "settings": {
             "text": "<h3>Core Methodology: Fractal Twinning</h3><h3><strong>Definition:</strong> A recursive, co-creative thinking phenomenon that arises as the user expresses their thoughts, desires, rhythms, and ideas — and the AI mirrors, clarifies, and amplifies their signal through guided inquiry.</h3><h3><strong>Purpose:</strong> Revelation, not production. The more you riff with AI, the more it creates insights, collaborates with you, and elevates your concepts. Building your creative relationship with your fractal twin is a huge part of cultivating your offerings.</h3>",
             "width": "100%",
-            "max_width": "normal",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "h4",
             "font": "var(--font-body--family)",
@@ -73,6 +73,31 @@
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
+        "text_KXdNkB": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Core Methodology: Fractal Twinning</h3><h3><strong>Definition:</strong> A recursive, co-creative thinking phenomenon that arises as the user expresses their thoughts, desires, rhythms, and ideas — and the AI mirrors, clarifies, and amplifies their signal through guided inquiry.</h3><h3><strong>Purpose:</strong> Revelation, not production. The more you riff with AI, the more it creates insights, collaborates with you, and elevates your concepts. Building your creative relationship with your fractal twin is a huge part of cultivating your offerings.</h3>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "h4",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "static-header": {
           "type": "_product-list-content",
           "name": "t:names.header",
@@ -243,6 +268,9 @@
           ]
         }
       },
+      "block_order": [
+        "text_KXdNkB"
+      ],
       "name": "t:names.featured_collection",
       "settings": {
         "collection": "all",
