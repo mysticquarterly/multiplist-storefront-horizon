@@ -10,99 +10,13 @@
 {
   "sections": {
     "main": {
-      "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "Page Title",
-          "settings": {
-            "text": "<h1>About Multiplist Studios</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h1",
-            "font": "var(--font-heading--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "mission": {
-          "type": "text",
-          "name": "Mission",
-          "settings": {
-            "text": "<h2>What We Build</h2><p>Multiplist Studios builds Intelligence Fields — living AI systems infused with your intellectual property. Not chatbots. Not automations. Co-intelligences that think alongside you, preserve what you know, and compound your expertise over time.</p><p>We started with a question: What happens to all the thinking you do between conversations? The frameworks you develop, the patterns you notice, the language you've refined over years of practice — where does it go when the chat window closes?</p><p>The answer was: it disappears. Every session starts from zero. Your AI doesn't remember what you've built together. We call this <strong>AI Amnesia</strong>, and it's the most expensive problem nobody talks about.</p>",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 16,
-            "padding-block-end": 16,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "fractal-twinning": {
-          "type": "text",
-          "name": "Fractal Twinning",
-          "settings": {
-            "text": "<h2>Fractal Twinning</h2><p>Our methodology isn't a production process — it's a way of thinking with AI that surfaces what you already know but haven't articulated yet. We call it Fractal Twinning: recursive co-creative thinking where the AI becomes a mirror for your expertise.</p><p>Each conversation reveals another layer. Each session compounds. The more you build your Intelligence Field, the wider the breadth of your intelligence for creating.</p>",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 16,
-            "padding-block-end": 16,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
-        }
-      },
-      "block_order": ["heading", "mission", "fractal-twinning", "page-content"],
+      "type": "custom-liquid",
       "settings": {
-        "content_direction": "column",
-        "gap": 24,
+        "custom_liquid": "{% render 'about-page' %}",
         "color_scheme": "scheme-8",
-        "padding-block-start": 48,
-        "padding-block-end": 80
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },

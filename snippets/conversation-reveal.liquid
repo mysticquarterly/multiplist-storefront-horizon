@@ -311,6 +311,49 @@
     margin: 0;
   }
 
+  /* ---- Four-Frame positioning ---- */
+  .convo-frames {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .convo-frame {
+    padding: 20px;
+    background: rgba(24, 145, 171, 0.05);
+    border: 1px solid rgba(24, 145, 171, 0.15);
+    border-radius: 10px;
+  }
+
+  .convo-frame__label {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #1891AB;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+  }
+
+  .convo-frame__text {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: #c8c8c8;
+    margin: 0;
+  }
+
+  .convo-frame__text strong {
+    color: #EAEAEA;
+  }
+
+  @media (max-width: 640px) {
+    .convo-frames {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* ---- Working With Me section ---- */
   .convo-experience {
     background: #12252B;
