@@ -219,6 +219,148 @@
     font-weight: 600;
   }
 
+  /* ---- Pain/Solution pairs ---- */
+  .convo-pairs {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0 0;
+  }
+
+  .convo-pair {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 24px;
+    background: #1a1a1a;
+    border: 1px solid #3b3b3b;
+    border-radius: 12px;
+  }
+
+  .convo-pair__pain {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 0.9375rem;
+    color: #a6a6a6;
+    line-height: 1.5;
+  }
+
+  .convo-pair__arrow {
+    color: #1891AB;
+    font-size: 1.125rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .convo-pair__solution {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 0.9375rem;
+    color: #EAEAEA;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .convo-pair {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      text-align: center;
+    }
+    .convo-pair__arrow {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  /* ---- Platform feature blocks ---- */
+  .convo-platform {
+    background: #0f1f24;
+    border-top: 1px solid #3b3b3b;
+    padding: 80px 24px;
+  }
+
+  .convo-platform__inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .convo-platform__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .convo-platform__feature {
+    padding: 24px;
+    border-left: 2px solid #1891AB;
+  }
+
+  .convo-platform__feature-title {
+    font-family: var(--font-heading--family, 'Inter', sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #EAEAEA;
+    margin: 0 0 6px;
+  }
+
+  .convo-platform__feature-desc {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: #a6a6a6;
+    margin: 0;
+  }
+
+  /* ---- Working With Me section ---- */
+  .convo-experience {
+    background: #12252B;
+    padding: 80px 24px;
+  }
+
+  .convo-experience__inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .convo-experience__list {
+    margin: 28px 0 0;
+    display: grid;
+    gap: 20px;
+  }
+
+  .convo-experience__item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .convo-experience__check {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: rgba(24, 145, 171, 0.15);
+    color: #1891AB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .convo-experience__text {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #c8c8c8;
+  }
+
+  .convo-experience__text strong {
+    color: #EAEAEA;
+    font-weight: 600;
+  }
+
   /* ---- Ways In cards ---- */
   .convo-ways {
     padding: 80px 24px;
