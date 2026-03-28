@@ -42,7 +42,7 @@
           "type": "text",
           "name": "Intro",
           "settings": {
-            "text": "<p>Four phases. Each one compounds what came before. </p><p>You start wherever you are — we meet you there.</p>",
+            "text": "<p>Four phases. </p><p>Each one compounds what came before. </p><p>You start wherever you are — we meet you there.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
