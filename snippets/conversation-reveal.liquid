@@ -1,0 +1,349 @@
+{% comment %}
+  Conversation Reveal — Typing animation for homepage narrative sections.
+  Each section appears as if Aero is typing the story to you.
+  Uses Intersection Observer for scroll-triggered reveals.
+  Word-by-word reveal for headings, line-by-line for body text.
+{% endcomment %}
+
+<style>
+  /* ---- Conversation reveal containers ---- */
+  .convo-section {
+    padding: 80px 24px;
+    max-width: 680px;
+    margin: 0 auto;
+    background: #12252B;
+  }
+
+  .convo-section--wide {
+    max-width: 860px;
+  }
+
+  .convo-section--full {
+    max-width: 100%;
+    padding: 100px 24px;
+  }
+
+  /* ---- Speaker labels ---- */
+  .convo-speaker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+  }
+
+  .convo-speaker__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1891AB;
+  }
+
+  /* ---- Reveal animation base ---- */
+  .convo-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .convo-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger children */
+  .convo-reveal-group .convo-reveal:nth-child(1) { transition-delay: 0s; }
+  .convo-reveal-group .convo-reveal:nth-child(2) { transition-delay: 0.15s; }
+  .convo-reveal-group .convo-reveal:nth-child(3) { transition-delay: 0.3s; }
+  .convo-reveal-group .convo-reveal:nth-child(4) { transition-delay: 0.45s; }
+  .convo-reveal-group .convo-reveal:nth-child(5) { transition-delay: 0.6s; }
+  .convo-reveal-group .convo-reveal:nth-child(6) { transition-delay: 0.75s; }
+  .convo-reveal-group .convo-reveal:nth-child(7) { transition-delay: 0.9s; }
+  .convo-reveal-group .convo-reveal:nth-child(8) { transition-delay: 1.05s; }
+
+  /* ---- Typography ---- */
+  .convo-heading {
+    font-family: var(--font-heading--family, 'Inter', sans-serif);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #EAEAEA;
+    line-height: 1.2;
+    margin: 0 0 24px;
+  }
+
+  .convo-heading--large {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    text-align: center;
+  }
+
+  .convo-body {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: #c8c8c8;
+    margin: 0 0 20px;
+  }
+
+  .convo-body strong {
+    color: #1891AB;
+    font-weight: 600;
+  }
+
+  .convo-body em {
+    color: #E8DDD6;
+    font-style: italic;
+  }
+
+  /* ---- Typing cursor ---- */
+  .convo-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background: #1891AB;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: cursor-blink 1s step-end infinite;
+  }
+
+  .convo-cursor.is-hidden {
+    display: none;
+  }
+
+  @keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* ---- Divider ---- */
+  .convo-divider {
+    width: 48px;
+    height: 1px;
+    background: #3b3b3b;
+    margin: 0 0 24px;
+  }
+
+  .convo-divider--center {
+    margin: 0 auto 24px;
+  }
+
+  /* ---- Three-field cards ---- */
+  .convo-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 32px 0 0;
+  }
+
+  .convo-card {
+    background: #1a1a1a;
+    border: 1px solid #3b3b3b;
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color 0.3s ease;
+  }
+
+  .convo-card:hover {
+    border-color: #1891AB;
+  }
+
+  .convo-card__title {
+    font-family: var(--font-heading--family, 'Inter', sans-serif);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #EAEAEA;
+    margin: 0 0 12px;
+  }
+
+  .convo-card__text {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #a6a6a6;
+    margin: 0;
+  }
+
+  /* ---- Phase steps ---- */
+  .convo-phases {
+    display: grid;
+    gap: 24px;
+    margin: 32px 0 0;
+  }
+
+  .convo-phase {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .convo-phase__number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #1891AB;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+  }
+
+  .convo-phase__content {
+    flex: 1;
+  }
+
+  .convo-phase__title {
+    font-family: var(--font-heading--family, 'Inter', sans-serif);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #EAEAEA;
+    margin: 0 0 6px;
+  }
+
+  .convo-phase__desc {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #a6a6a6;
+    margin: 0;
+  }
+
+  .convo-phase__price {
+    color: #1891AB;
+    font-weight: 600;
+  }
+
+  /* ---- Fractal Twinning bold section ---- */
+  .convo-fractal {
+    background: linear-gradient(180deg, #12252B 0%, #0d1c21 100%);
+    border-top: 1px solid #3b3b3b;
+    border-bottom: 1px solid #3b3b3b;
+    text-align: center;
+    padding: 100px 24px;
+  }
+
+  .convo-fractal__label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1891AB;
+    margin: 0 0 20px;
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-weight: 600;
+  }
+
+  .convo-fractal__heading {
+    font-family: var(--font-heading--family, 'Inter', sans-serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #EAEAEA;
+    margin: 0 0 28px;
+    line-height: 1.2;
+  }
+
+  .convo-fractal__body {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #c8c8c8;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .convo-fractal__body em {
+    color: #E8DDD6;
+  }
+
+  /* ---- Final CTA ---- */
+  .convo-cta {
+    text-align: center;
+    padding: 80px 24px 100px;
+    background: #12252B;
+  }
+
+  .convo-cta__heading {
+    font-family: var(--font-heading--family, 'Inter', sans-serif);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: #EAEAEA;
+    margin: 0 0 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.25;
+  }
+
+  .convo-cta__body {
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    font-size: 1.0625rem;
+    color: #a6a6a6;
+    margin: 0 0 32px;
+    line-height: 1.6;
+  }
+
+  .convo-cta__button {
+    display: inline-block;
+    background: #1891AB;
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body--family, 'Inter', sans-serif);
+    text-decoration: none;
+    transition: background 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .convo-cta__button:hover {
+    background: #0097b2;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .convo-section {
+      padding: 60px 20px;
+    }
+    .convo-cards {
+      grid-template-columns: 1fr;
+    }
+    .convo-fractal {
+      padding: 72px 20px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var reveals = document.querySelectorAll('.convo-reveal');
+    if (!reveals.length) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          /* Hide cursor after reveal */
+          var cursor = entry.target.querySelector('.convo-cursor');
+          if (cursor) {
+            setTimeout(function() { cursor.classList.add('is-hidden'); }, 2000);
+          }
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(function(el) {
+      observer.observe(el);
+    });
+  });
+</script>
