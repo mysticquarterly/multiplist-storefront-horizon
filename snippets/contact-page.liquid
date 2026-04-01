@@ -160,13 +160,17 @@
     transition: all 0.3s ease;
   }
 
-  .contact-card__button--whatsapp {
+  .contact-card__button--whatsapp,
+  .contact-card__button--whatsapp:link,
+  .contact-card__button--whatsapp:visited {
     background: #25D366;
-    color: #fff;
+    color: #12252B !important;
+    font-weight: 700;
   }
 
   .contact-card__button--whatsapp:hover {
     background: #1ebe57;
+    color: #12252B !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
   }
