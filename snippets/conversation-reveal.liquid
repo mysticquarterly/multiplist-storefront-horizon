@@ -557,16 +557,18 @@
     line-height: 1.6;
   }
 
-  .convo-cta__button {
+  .convo-cta__button,
+  .convo-cta__button:link,
+  .convo-cta__button:visited {
     display: inline-block;
     background: #1891AB;
-    color: #fff;
+    color: #12252B !important;
     padding: 16px 36px;
     border-radius: 14px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     font-family: var(--font-body--family, 'Inter', sans-serif);
-    text-decoration: none;
+    text-decoration: none !important;
     transition: background 0.2s ease;
     cursor: pointer;
     border: none;
@@ -574,8 +576,8 @@
 
   .convo-cta__button:hover {
     background: #0097b2;
-    color: #fff;
-    text-decoration: none;
+    color: #12252B !important;
+    text-decoration: none !important;
   }
 
   @media (max-width: 640px) {
